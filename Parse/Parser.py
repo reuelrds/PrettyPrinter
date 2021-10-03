@@ -114,7 +114,6 @@ class Parser:
 
         else:
             car = self.__parseExp(token)
-
             cdr = self.parseRestPrime()
 
             if cdr is None:
@@ -127,9 +126,7 @@ class Parser:
     # TODO: Add any additional methods you might need
 
     def parseRestPrime(self):
-        return self.__parseRestPrime(self.scanner.getNextToken())
-
-    def __parseRestPrime(self, token: Token):
+        token = self.scanner.getNextToken()
 
         if token is None:
             return
@@ -137,14 +134,12 @@ class Parser:
         elif token.getType() == TokenType.DOT:
 
             car = self.parseExp()
-
             token = self.scanner.getNextToken()
 
             if token is None:
                 return
 
             elif token.getType() == TokenType.RPAREN:
-
                 return Tree.Cons(car, Tree.Nil())
 
             else:
