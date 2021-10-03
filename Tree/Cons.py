@@ -3,6 +3,9 @@
 from Tree import Node
 from Tree import Ident
 
+import sys
+
+
 class Cons(Node):
     def __init__(self, a, d):
         self.car = a
@@ -23,7 +26,14 @@ class Cons(Node):
         self.form = None
 
     def print(self, n, p=False):
-        self.form.print(self, n, p)
+        # self.form.print(self, n, p)
+        sys.stdout.write("(")
+        self.car.print(n=-1)
+        sys.stdout.write(". ")
+        self.cdr.print(n=-1)
+
+        sys.stdout.write(")")
+
 
 if __name__ == "__main__":
     c = Cons(Ident("Hello"), Ident("World"))

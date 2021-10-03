@@ -23,9 +23,11 @@ class Nil(Node):
         for _ in range(n):
             sys.stdout.write(' ')
         if p:
-            sys.stdout.write(")\n")
+            # sys.stdout.write(")\n")
+            sys.stdout.write(") ")
         else:
-            sys.stdout.write("()\n")
+            # sys.stdout.write("()\n")
+            sys.stdout.write("() ")
 
 if __name__ == "__main__":
     n = Nil.getInstance()

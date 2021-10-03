@@ -41,5 +41,7 @@ if __name__ == "__main__":
         # Parse and pretty-print each input expression
         root = parser.parseExp()
         while root != None:
+            sys.stdout.write("'")
             root.print(0)
+            sys.stdout.flush()
             root = parser.parseExp()
