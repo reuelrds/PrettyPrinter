@@ -38,6 +38,14 @@ class Scanner:
             ch = self.read()
 
             # TODO: Skip white space and comments
+            while ch == ' ' or ch == '\t' or ch == '\n' or ch == '\r' or ch == '\f' or ch == ';':
+                if ch == ';':
+                    while ch != '\n' and ch != "":
+                        ch = self.read()
+                    if ch != "":
+                        ch = self.read()
+                else:
+                    ch = self.read()
 
             # Return None on EOF
             if ch == "":
@@ -73,15 +81,28 @@ class Scanner:
             # String constants
             elif ch == '"':
                 self.buf = []
+                
                 # TODO: scan a string into the buffer variable buf
-    
+                ch = self.read()
+
+                while ch != '"':
+                    self.buf.append(ch)
+                    ch = self.read()
+                    
                 return StrToken("".join(self.buf))
 
             # Integer constants
             elif self.isDigit(ch):
-                i = ord(ch) - ord('0')
-                # TODO: scan the number and convert it to an integer
+                # i = ord(ch) - ord('0')
+                i = ch
 
+                # TODO: scan the number and convert it to an integer
+                while self.isDigit(self.peek()):
+                    ch = self.read()
+                    i = i + ch
+
+                i = int(i)
+                
                 # make sure that the character following the integer
                 # is not removed from the input stream
                 return IntToken(i)
@@ -91,8 +112,13 @@ class Scanner:
                 # or ch is some other vaid first character
                 # for an identifier
                 self.buf = []
+                
                 # TODO: scan an identifier into the buffer variable buf
+                self.buf.append(ch)
 
+                while self.isLetter(self.peek()) or self.specialInitial(self.peek()) or self.isDigit(self.peek()) or self.peculiarIdentifier(self.peek()) or self.peek() == '.' or self.peek() == '@':
+                    ch = self.read()
+                    self.buf.append(ch)
 
                 # make sure that the character following the identifier
                 # is not removed from the input stream
