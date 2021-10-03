@@ -73,13 +73,13 @@ class Parser:
             return self.parseRest()
 
         elif token.getType() == TokenType.TRUE:
-            return Tree.BoolLit(True)
+            return Tree.BoolLit.getInstance(True)
 
         elif token.getType() == TokenType.FALSE:
-            return Tree.BoolLit(False)
+            return Tree.BoolLit.getInstance(False)
 
         elif token.getType() == TokenType.QUOTE:
-            return Tree.Cons(Tree.Ident("quote"), Tree.Cons(self.parseExp(), Tree.Nil()))
+            return Tree.Cons(Tree.Ident("quote"), Tree.Cons(self.parseExp(), Tree.Nil.getInstance()))
 
         elif token.getType() == TokenType.INT:
             return Tree.IntLit(token.getIntVal())
@@ -110,7 +110,7 @@ class Parser:
             return
 
         elif token.getType() == TokenType.RPAREN:
-            return Tree.Nil()
+            return Tree.Nil.getInstance()
 
         else:
             car = self.__parseExp(token)
@@ -140,7 +140,7 @@ class Parser:
                 return
 
             elif token.getType() == TokenType.RPAREN:
-                return Tree.Cons(car, Tree.Nil())
+                return Tree.Cons(car, Tree.Nil.getInstance())
 
             else:
                 self.__error("Error in parsing token from the input")
