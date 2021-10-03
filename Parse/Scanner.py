@@ -28,6 +28,18 @@ class Scanner:
     @staticmethod
     def isDigit(ch):
         return ch >= '0' and ch <= '9'
+    
+    @staticmethod
+    def isLetter(ch):
+        return  ch >= 'a' and ch <= 'z'
+
+    @staticmethod
+    def specialInitial(ch):
+        return ch == '!' or ch == '$' or ch == '%' or ch == '&' or ch == '*' or ch == '/' or ch == ':' or ch == '<' or ch == '=' or ch == '>' or ch == '?' or ch == '^' or ch == '_' or ch == '~'
+
+    @staticmethod
+    def peculiarIdentifier(ch):
+        return ch == '+' or ch == '-'
 
     def getNextToken(self):
         try:
