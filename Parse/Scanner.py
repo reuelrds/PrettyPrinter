@@ -120,9 +120,7 @@ class Scanner:
                 return IntToken(i)
     
             # Identifiers
-            elif ch >= 'A' and ch <= 'Z':
-                # or ch is some other vaid first character
-                # for an identifier
+            elif self.isLetter(ch) or self.specialInitial(ch) or self.peculiarIdentifier(ch):
                 self.buf = []
                 
                 # TODO: scan an identifier into the buffer variable buf
