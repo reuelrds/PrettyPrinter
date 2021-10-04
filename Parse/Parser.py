@@ -63,11 +63,19 @@ class Parser:
         return self.__parseExp(self.scanner.getNextToken())
 
     def __parseExp(self, token: Token):
-        # TODO: write code for parsing an exp
 
         # End of input
         if token is None:
             return
+
+        # The following branches test whether an exp is an
+        #         |  (
+        #         |  #f
+        #         |  #t
+        #         |  '
+        #         |  integer_constant
+        #         |  string_constant
+        #         |  identifier
 
         elif token.getType() == TokenType.LPAREN:
             return self.parseRest()
@@ -79,6 +87,8 @@ class Parser:
             return Tree.BoolLit.getInstance(False)
 
         elif token.getType() == TokenType.QUOTE:
+
+            # Parses '(a) as (quote (a))
             return Tree.Cons(Tree.Ident("quote"), Tree.Cons(self.parseExp(), Tree.Nil.getInstance()))
 
         elif token.getType() == TokenType.INT:
@@ -90,12 +100,19 @@ class Parser:
         elif token.getType() == TokenType.IDENT:
             return Tree.Ident(token.getName())
 
+        # Sanity Check.
+        # The . should only be recognized by the rest' rule
+        # If the token is a . then it means that the input expression is not valid
         elif token.getType() == TokenType.DOT:
             self.__error("Illegal DOT in the expression")
 
+        # Sanity Check.
+        # The ) should only be recognized by the rest rule
         elif token.getType() == TokenType.RPAREN:
             self.__error("Illegal Right Parenthesis in the expression")
 
+        # To handle the case when the parser can't recognize the input.
+        # i.e. either there's an error in the parser or the input expression is not valid
         else:
             self.__error("Error in parsing token from the input")
 
@@ -103,9 +120,9 @@ class Parser:
         return self.__parseRest(self.scanner.getNextToken())
 
     def __parseRest(self, token: Token):
-        # TODO: write code for parsing a rest
 
-        # Do we need to test this case in parseRest?
+        # TODO: Do we need to test this case in parseRest?
+        #       Or Should we throw an error when the rest gets a NONE token?
         if token is None:
             return
 
@@ -116,6 +133,9 @@ class Parser:
             car = self.__parseExp(token)
             cdr = self.parseRestPrime()
 
+            # TODO: Check if the error wording is correct.
+            #       Not sure if the parser should show "Error in parsing..."
+            #       Or "Prematurely reached end of file... "
             if cdr is None:
                 self.__error("Error in parsing token from the input")
                 return
@@ -123,25 +143,34 @@ class Parser:
             else:
                 return Tree.Cons(car, cdr)
 
-    # TODO: Add any additional methods you might need
-
     def parseRestPrime(self):
         token = self.scanner.getNextToken()
 
+        # TODO: Same as above. Do we need to test this case in parseRestPrime?
+        #       Or Should we throw an error when the rest gets a NONE token?
         if token is None:
             return
 
         elif token.getType() == TokenType.DOT:
 
+            # As the token is a DOT token, the return value of the parseExp
+            # in the previous call to parseExp from __parseRest will go
+            # in the car of the CONS node (Line 144) and the return value of 
+            # the following call to parseExp will go to the cdr of the CONS node
+            # if the next token is a RPAREN.
             cdr = self.parseExp()
             token = self.scanner.getNextToken()
 
+            # TODO: Same as above for None token.
             if token is None:
                 return
 
             elif token.getType() == TokenType.RPAREN:
                 return cdr
 
+            # TODO: Check if the error wording is correct.
+            #       Not sure if the parser should show "Error in parsing..."
+            #       Or "Prematurely reached end of file... "
             else:
                 self.__error("Error in parsing token from the input")
                 return
