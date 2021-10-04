@@ -133,14 +133,14 @@ class Parser:
 
         elif token.getType() == TokenType.DOT:
 
-            car = self.parseExp()
+            cdr = self.parseExp()
             token = self.scanner.getNextToken()
 
             if token is None:
                 return
 
             elif token.getType() == TokenType.RPAREN:
-                return Tree.Cons(car, Tree.Nil.getInstance())
+                return cdr
 
             else:
                 self.__error("Error in parsing token from the input")
