@@ -31,7 +31,7 @@ class Scanner:
     
     @staticmethod
     def isLetter(ch):
-        return  ch >= 'a' and ch <= 'z'
+        return (ch >= 'A' and ch <= 'Z') or (ch >= 'a' and ch <= 'z')
 
     @staticmethod
     def specialInitial(ch):
