@@ -22,18 +22,19 @@ class Regular(Special):
 
         if not p:
             sys.stdout.write("(")
-
-        elif n < 0:
-            sys.stdout.write(" ")
-
-        if car.isPair():
-
             car.print(-(abs(n)), False)
 
-        else:
-            car.print(-(abs(n)), True)
+            if n <= 0 and not cdr.isNull():
+                sys.stdout.write(" ")
 
-        cdr.print(-(abs(n)), True)
+            cdr.print(-(abs(n)), True)
+
+        else:
+            car.print(-(abs(n)), False)
+            if n <= 0 and not cdr.isNull():
+                sys.stdout.write(" ")
+
+            cdr.print(-(abs(n)), True)
 
         # TODO: Handle Dot
         # else:

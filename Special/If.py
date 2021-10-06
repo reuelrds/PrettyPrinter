@@ -27,11 +27,13 @@ class If(Special):
         sys.stdout.write("\n")
 
         if truthy_expression:
-            truthy_expression.print(n=n+4, p=False)
+            sys.stdout.write(' ' * (n + 4))
+            truthy_expression.print(n=-(n+4), p=False)
 
         sys.stdout.write("\n")
         if falsy_expression:
-            falsy_expression.print(n=n+4, p=False)
+            sys.stdout.write(' ' * (n + 4))
+            falsy_expression.print(n=-(n+4), p=False)
 
         sys.stdout.write("\n")
         sys.stdout.write(")")
