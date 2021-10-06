@@ -18,6 +18,9 @@ class Ident(Node):
         # sys.stdout.write(self.name + '\n')
         sys.stdout.write(self.name + ' ')
 
+    def isSymbol(self):
+        return True
+
 
 if __name__ == "__main__":
     id = Ident("foo")

@@ -15,6 +15,9 @@ class StrLit(Node):
         # sys.stdout.write("\"" + self.strVal + "\"\n")
         sys.stdout.write("\"" + self.strVal + "\" ")
 
+    def isString(self):
+        return True
+
 
 if __name__ == "__main__":
     id = StrLit("foo")

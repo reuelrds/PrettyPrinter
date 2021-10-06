@@ -53,6 +53,9 @@ class Cons(Tree.Node):
         else:
             self.form = Special.Regular()
 
+    def isPair(self):
+        return True
+
     def print(self, n, p=False):
         self.form.print(self, n, p)
         # sys.stdout.write("(")

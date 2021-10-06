@@ -30,7 +30,6 @@ class Node(ABC):
     # evaluating them, we need some helper functions that test
     # the type of a node and that extract some information.
 
-    # TODO: implemented these in the appropriate subclasses to return true.
     def isBool(self):           # BoolLit
         return False
     def isNumber(self):         # IntLit
