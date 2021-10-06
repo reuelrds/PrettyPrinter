@@ -3,8 +3,9 @@
 import sys
 from Tree import Node
 
+
 class BoolLit(Node):
-    __trueInstance =  None
+    __trueInstance = None
     __falseInstance = None
 
     @staticmethod
@@ -32,15 +33,16 @@ class BoolLit(Node):
                 BoolLit.__falseInstance = self
 
     def print(self, n, p=False):
-        # There got to be a more efficient way to print n spaces.
-        for _ in range(n):
-            sys.stdout.write(' ')
+
+        sys.stdout.write(' ' * n)
+
         if self.boolVal:
             # sys.stdout.write("#t\n")
             sys.stdout.write("#t ")
         else:
             # sys.stdout.write("#f\n")
             sys.stdout.write("#f ")
+
 
 if __name__ == "__main__":
     b = BoolLit.getInstance(True)

@@ -9,9 +9,9 @@ class StrLit(Node):
         self.strVal = s
 
     def print(self, n, p=False):
-        # There got to be a more efficient way to print n spaces.
-        for _ in range(n):
-            sys.stdout.write(' ')
+
+        sys.stdout.write(' ' * n)
+
         # sys.stdout.write("\"" + self.strVal + "\"\n")
         sys.stdout.write("\"" + self.strVal + "\" ")
 
