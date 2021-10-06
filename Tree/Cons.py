@@ -56,14 +56,14 @@ class Cons(Tree.Node):
     def isPair(self):
         return True
 
+    def getCar(self):
+        return self.car
+
+    def getCdr(self):
+        return self.cdr
+
     def print(self, n, p=False):
         self.form.print(self, n, p)
-        # sys.stdout.write("(")
-        # self.car.print(n=-1)
-        # sys.stdout.write(". ")
-        # self.cdr.print(n=-1)
-
-        # sys.stdout.write(")")
 
 
 if __name__ == "__main__":

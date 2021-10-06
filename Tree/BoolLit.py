@@ -37,11 +37,23 @@ class BoolLit(Node):
         sys.stdout.write(' ' * n)
 
         if self.boolVal:
-            # sys.stdout.write("#t\n")
-            sys.stdout.write("#t ")
+            sys.stdout.write("#t")
         else:
-            # sys.stdout.write("#f\n")
-            sys.stdout.write("#f ")
+            sys.stdout.write("#f")
+
+        # If the indentation value `n` is negative
+        # we print a single space after `#t` or `#f`.
+        #
+        # And if the indentation is positive, we do
+        # not print a space.
+        #
+        # TODO: Explain the following in a better way.
+
+        # if n < 0:
+            # sys.stdout.write(" " * (-n//n))
+
+        # if n > 0:
+            # sys.stdout.write("\n")
 
     def isBool(self):
         return True

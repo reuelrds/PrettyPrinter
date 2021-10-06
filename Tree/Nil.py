@@ -21,14 +21,15 @@ class Nil(Node):
 
     def print(self, n, p=False):
 
-        sys.stdout.write(' ' * n)
+        sys.stdout.write(' ' * (n - 4))
 
         if p:
-            # sys.stdout.write(")\n")
-            sys.stdout.write(") ")
+            sys.stdout.write(")")
         else:
-            # sys.stdout.write("()\n")
-            sys.stdout.write("() ")
+            sys.stdout.write("()")
+
+        # if n < 0:
+        #     sys.stdout.write(" ")
 
     def isNull(self):
         return True
