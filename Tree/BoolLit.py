@@ -34,6 +34,9 @@ class BoolLit(Node):
 
     def print(self, n, p=False):
 
+        if n > 0:
+            sys.stdout.write("\n")
+
         sys.stdout.write(' ' * n)
 
         if self.boolVal:

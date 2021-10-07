@@ -9,6 +9,10 @@ class IntLit(Node):
         self.intVal = i
 
     def print(self, n, p=False):
+
+        if n > 0:
+            sys.stdout.write("\n")
+
         sys.stdout.write(' ' * n)
 
         sys.stdout.write(str(self.intVal))
@@ -22,10 +26,10 @@ class IntLit(Node):
         # TODO: Explain the following in a better way.
         #       And maybe refactor it to a helper funtion.
         # if n < 0:
-            # sys.stdout.write(" " * (-n//n))
+        # sys.stdout.write(" " * (-n//n))
 
         # if n > 0:
-            # sys.stdout.write("\n")
+        # sys.stdout.write("\n")
 
     def isNumber(self):
         return True
