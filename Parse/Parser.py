@@ -95,7 +95,7 @@ class Parser:
             return Tree.IntLit(token.getIntVal())
 
         elif token.getType() == TokenType.STR:
-            return Tree.IntLit(token.getStrVal())
+            return Tree.StrLit(token.getStrVal())
 
         elif token.getType() == TokenType.IDENT:
             return Tree.Ident(token.getName())
@@ -155,7 +155,7 @@ class Parser:
 
             # As the token is a DOT token, the return value of the parseExp
             # in the previous call to parseExp from __parseRest will go
-            # in the car of the CONS node (Line 144) and the return value of 
+            # in the car of the CONS node (Line 144) and the return value of
             # the following call to parseExp will go to the cdr of the CONS node
             # if the next token is a RPAREN.
             cdr = self.parseExp()
