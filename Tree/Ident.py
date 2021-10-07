@@ -13,6 +13,9 @@ class Ident(Node):
 
     def print(self, n, p=False):
 
+        if n > 0:
+            sys.stdout.write("\n")
+
         sys.stdout.write(' ' * n)
 
         sys.stdout.write(self.name)
@@ -27,10 +30,10 @@ class Ident(Node):
         #       And maybe refactor it to a helper funtion.
 
         # if n < 0:
-            # sys.stdout.write(" " * (-n//n))
+        # sys.stdout.write(" " * (-n//n))
 
         # if n > 0:
-            # sys.stdout.write("\n")
+        # sys.stdout.write("\n")
 
     def isSymbol(self):
         return True
