@@ -16,7 +16,8 @@ class Regular(Special):
         car = t.getCar()
         cdr = t.getCdr()
 
-        # if t.isPair():
+        if n > 0:
+            sys.stdout.write("\n")
 
         sys.stdout.write(" " * n)
 
@@ -24,27 +25,19 @@ class Regular(Special):
             sys.stdout.write("(")
             car.print(-(abs(n)), False)
 
-            if n <= 0 and not cdr.isNull():
+            if  not cdr.isNull():
                 sys.stdout.write(" ")
 
-            cdr.print(-(abs(n)), True)
+            if cdr.isPair() or cdr.isNull():
+                cdr.print(-(abs(n)), True)
 
         else:
             car.print(-(abs(n)), False)
-            if n <= 0 and not cdr.isNull():
+
+            if  not cdr.isNull():
                 sys.stdout.write(" ")
 
-            cdr.print(-(abs(n)), True)
+            if cdr.isPair() or cdr.isNull():
+                cdr.print(n, p)
 
         # TODO: Handle Dot
-        # else:
-        # car.print(-(abs(n)), True)
-
-        # if cdr.isNull() or cdr.isPair():
-        # else:
-        # cdr.print(-abs(n+4), False)
-
-        c = 1
-
-        # if n > 0:
-        # sys.stdout.write("\n")

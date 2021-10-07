@@ -13,6 +13,9 @@ class If(Special):
     def print(self, t, n, p):
         # TODO: Implement this function.
 
+        if n > 0:
+            sys.stdout.write("\n")
+
         sys.stdout.write(' ' * n)
         sys.stdout.write("(if ")
 
@@ -20,20 +23,11 @@ class If(Special):
         condition = t.getCdr().getCar()
         truthy_expression = t.getCdr().getCdr().getCar()
         falsy_expression = t.getCdr().getCdr().getCdr().getCar()
+        end_paren = t.getCdr().getCdr().getCdr().getCdr()
 
-        if condition:
-            condition.print(n=-(n+4), p=False)
 
-        sys.stdout.write("\n")
+        condition.print(n=-(abs(n)+4), p=False)
+        truthy_expression.print(n=(abs(n)+4), p=False)
+        falsy_expression.print(n=(abs(n)+4), p=False)
 
-        if truthy_expression:
-            sys.stdout.write(' ' * (n + 4))
-            truthy_expression.print(n=-(n+4), p=False)
-
-        sys.stdout.write("\n")
-        if falsy_expression:
-            sys.stdout.write(' ' * (n + 4))
-            falsy_expression.print(n=-(n+4), p=False)
-
-        sys.stdout.write("\n")
-        sys.stdout.write(")")
+        end_paren.print(n=(abs(n)+4), p=True)
