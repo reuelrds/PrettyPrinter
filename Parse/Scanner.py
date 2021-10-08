@@ -4,6 +4,7 @@ import sys
 import io
 from Tokens import *
 
+
 class Scanner:
     def __init__(self, i):
         self.In = i
@@ -17,7 +18,7 @@ class Scanner:
             ch = self.ch_buf
             self.ch_buf = None
             return ch
-    
+
     def peek(self):
         if self.ch_buf == None:
             self.ch_buf = self.In.read(1)
@@ -28,7 +29,7 @@ class Scanner:
     @staticmethod
     def isDigit(ch):
         return ch >= '0' and ch <= '9'
-    
+
     @staticmethod
     def isLetter(ch):
         return (ch >= 'A' and ch <= 'Z') or (ch >= 'a' and ch <= 'z')
@@ -62,7 +63,7 @@ class Scanner:
             # Return None on EOF
             if ch == "":
                 return None
-    
+
             # Special characters
             elif ch == '\'':
                 return Token(TokenType.QUOTE)
@@ -93,14 +94,14 @@ class Scanner:
             # String constants
             elif ch == '"':
                 self.buf = []
-                
+
                 # TODO: scan a string into the buffer variable buf
                 ch = self.read()
 
                 while ch != '"':
                     self.buf.append(ch)
                     ch = self.read()
-                    
+
                 return StrToken("".join(self.buf))
 
             # Integer constants
@@ -114,15 +115,15 @@ class Scanner:
                     i = i + ch
 
                 i = int(i)
-                
+
                 # make sure that the character following the integer
                 # is not removed from the input stream
                 return IntToken(i)
-    
+
             # Identifiers
             elif self.isLetter(ch) or self.specialInitial(ch) or self.peculiarIdentifier(ch):
                 self.buf = []
-                
+
                 # TODO: scan an identifier into the buffer variable buf
                 self.buf.append(ch)
 
@@ -132,7 +133,7 @@ class Scanner:
 
                 # make sure that the character following the identifier
                 # is not removed from the input stream
-                return IdentToken("".join(self.buf))
+                return IdentToken("".join(self.buf).lower())
 
             # Illegal character
             else:
