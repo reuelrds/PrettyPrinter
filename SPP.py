@@ -42,6 +42,6 @@ if __name__ == "__main__":
         root = parser.parseExp()
         while root != None:
             root.print(0)
-            sys.stdout.write("\n")
+            # sys.stdout.write("\n")
             sys.stdout.flush()
             root = parser.parseExp()

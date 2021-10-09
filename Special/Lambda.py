@@ -10,8 +10,6 @@ class Lambda(Special):
         pass
 
     def print(self, t, n, p):
-        if n > 0:
-            sys.stdout.write("\n")
 
         sys.stdout.write(' ' * n)
         sys.stdout.write("(lambda ")
@@ -24,6 +22,19 @@ class Lambda(Special):
         end_paren = t.getCdr().getCdr().getCdr()
 
         formals.print(n=-(abs(n)+4), p=False)
+        if abs(n) + 4 > 0:
+            sys.stdout.write("\n")
         body.print(n=(abs(n)+4), p=False)
+        # if abs(n) + 4 > 0:
+            # sys.stdout.write("\n")
+        
+        sys.stdout.write(" " * (abs(n)))
+        sys.stdout.write(")")
+        
+        # if abs(n) + 4 > 0:
+        sys.stdout.write("\n")
 
-        end_paren.print(n=(abs(n)+4), p=True)
+        c = 1
+
+        return True
+        # end_paren.print(n=(abs(n)+4), p=True)

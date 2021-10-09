@@ -13,8 +13,6 @@ class If(Special):
     def print(self, t, n, p):
         # TODO: Implement this function.
 
-        if n > 0:
-            sys.stdout.write("\n")
 
         sys.stdout.write(' ' * n)
         sys.stdout.write("(if ")
@@ -27,7 +25,19 @@ class If(Special):
 
 
         condition.print(n=-(abs(n)+4), p=False)
+        if abs(n) + 4 > 0:
+            sys.stdout.write("\n")
         truthy_expression.print(n=(abs(n)+4), p=False)
+        # if abs(n) + 4 > 0:
+            # sys.stdout.write("\n")
         falsy_expression.print(n=(abs(n)+4), p=False)
 
-        end_paren.print(n=(abs(n)+4), p=True)
+        sys.stdout.write(" " * (abs(n)))
+        sys.stdout.write(")")
+        
+        if abs(n) + 4 > 0:
+            sys.stdout.write("\n")
+        # end_paren.print(n=(abs(n)+4), p=True)
+
+        # if n > 0:
+            # sys.stdout.write("\n")

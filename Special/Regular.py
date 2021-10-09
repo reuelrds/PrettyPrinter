@@ -16,18 +16,17 @@ class Regular(Special):
         car = t.getCar()
         cdr = t.getCdr()
 
-        if n > 0:
-            sys.stdout.write("\n")
-
         sys.stdout.write(" " * n)
 
         if not p:
             sys.stdout.write("(")
-            car.print(-(abs(n)), False)
+            car.print(-(abs(n) + 4), False)
 
             if not cdr.isNull():
                 sys.stdout.write(" ")
 
+            # if n > 0:
+                # sys.stdout.write("\n")
             if cdr.isPair() or cdr.isNull():
                 cdr.print(-(abs(n)), True)
 
@@ -37,11 +36,15 @@ class Regular(Special):
 
                 sys.stdout.write(")")
 
+            if n > 0:
+                sys.stdout.write("\n")
         else:
-            car.print(-(abs(n)), False)
+            indent = car.print(-(abs(n)), False)
 
             if not cdr.isNull():
                 sys.stdout.write(" ")
+            if n > 0 and not indent:
+                sys.stdout.write("\n")
 
             if cdr.isPair() or cdr.isNull():
                 cdr.print(n, p)
@@ -50,3 +53,6 @@ class Regular(Special):
                 sys.stdout.write(". ")
                 cdr.print(-(abs(n)), True)
                 sys.stdout.write(")")
+
+        # if n > 0:
+            # sys.stdout.write("\n")

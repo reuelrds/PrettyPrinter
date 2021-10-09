@@ -10,13 +10,13 @@ class IntLit(Node):
 
     def print(self, n, p=False):
 
-        if n > 0:
-            sys.stdout.write("\n")
-
         sys.stdout.write(' ' * n)
 
         sys.stdout.write(str(self.intVal))
 
+
+        if n > 0:
+            sys.stdout.write("\n")
         # If the indentation value `n` is negative
         # we print a single space after `#t` or `#f`.
         #

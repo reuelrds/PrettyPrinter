@@ -17,10 +17,14 @@
 #         |  exp+ [. exp] )
 #
 #
+# Converted rest into BNF form
+#
 #    rest -> )
 #         |  exp rest
 #         |  exp . exp )
 #
+#
+# Left Factored rest expression
 #
 #    rest -> )
 #         |  exp rest'
@@ -68,15 +72,6 @@ class Parser:
         if token is None:
             return
 
-        # The following branches test whether an exp is an
-        #         |  (
-        #         |  #f
-        #         |  #t
-        #         |  '
-        #         |  integer_constant
-        #         |  string_constant
-        #         |  identifier
-
         elif token.getType() == TokenType.LPAREN:
             return self.parseRest()
 
@@ -121,8 +116,6 @@ class Parser:
 
     def __parseRest(self, token: Token):
 
-        # TODO: Do we need to test this case in parseRest?
-        #       Or Should we throw an error when the rest gets a NONE token?
         if token is None:
             return
 
@@ -133,11 +126,8 @@ class Parser:
             car = self.__parseExp(token)
             cdr = self.parseRestPrime()
 
-            # TODO: Check if the error wording is correct.
-            #       Not sure if the parser should show "Error in parsing..."
-            #       Or "Prematurely reached end of file... "
-            if cdr is None:
-                self.__error("Error in parsing token from the input")
+            if car is None or cdr is None:
+                self.__error("Error in parsing the input")
                 return
 
             else:
@@ -146,8 +136,6 @@ class Parser:
     def parseRestPrime(self):
         token = self.scanner.getNextToken()
 
-        # TODO: Same as above. Do we need to test this case in parseRestPrime?
-        #       Or Should we throw an error when the rest gets a NONE token?
         if token is None:
             return
 
@@ -168,9 +156,6 @@ class Parser:
             elif token.getType() == TokenType.RPAREN:
                 return cdr
 
-            # TODO: Check if the error wording is correct.
-            #       Not sure if the parser should show "Error in parsing..."
-            #       Or "Prematurely reached end of file... "
             else:
                 self.__error("Error in parsing token from the input")
                 return

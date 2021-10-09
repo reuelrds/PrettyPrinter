@@ -13,10 +13,11 @@ class Set(Special):
     def print(self, t, n, p):
         # TODO: Implement this function.
 
-        if n > 0:
-            sys.stdout.write("\n")
 
         sys.stdout.write(' ' * n)
         sys.stdout.write("(set! ")
 
         t.getCdr().print(n=-(abs(n)+4), p=True)
+
+        if n > 0:
+            sys.stdout.write("\n")

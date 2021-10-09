@@ -63,7 +63,7 @@ class Cons(Tree.Node):
         return self.cdr
 
     def print(self, n, p=False):
-        self.form.print(self, n, p)
+        return self.form.print(self, n, p)
 
 
 if __name__ == "__main__":
