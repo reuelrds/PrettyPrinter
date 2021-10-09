@@ -36,7 +36,7 @@ class Regular(Special):
 
                 sys.stdout.write(")")
 
-            if n > 0:
+            if n >= 0:
                 sys.stdout.write("\n")
         else:
             indent = car.print(-(abs(n)), False)
