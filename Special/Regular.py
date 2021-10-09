@@ -25,19 +25,28 @@ class Regular(Special):
             sys.stdout.write("(")
             car.print(-(abs(n)), False)
 
-            if  not cdr.isNull():
+            if not cdr.isNull():
                 sys.stdout.write(" ")
 
             if cdr.isPair() or cdr.isNull():
                 cdr.print(-(abs(n)), True)
 
+            else:
+                sys.stdout.write(". ")
+                cdr.print(-(abs(n)), True)
+
+                sys.stdout.write(")")
+
         else:
             car.print(-(abs(n)), False)
 
-            if  not cdr.isNull():
+            if not cdr.isNull():
                 sys.stdout.write(" ")
 
             if cdr.isPair() or cdr.isNull():
                 cdr.print(n, p)
 
-        # TODO: Handle Dot
+            else:
+                sys.stdout.write(". ")
+                cdr.print(-(abs(n)), True)
+                sys.stdout.write(")")
