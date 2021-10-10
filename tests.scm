@@ -7,4 +7,4 @@
 (cond ((> 3 3) 'greater)((< 3 3) 'less)(else 'equal))
 (begin (set! x 5)(+ x 1))
 (begin (display "4 plus 1 equals ")(display (+ 4 1)))
-'(quote a)
+'(+ 1 2)
