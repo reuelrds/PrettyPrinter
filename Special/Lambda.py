@@ -30,3 +30,8 @@ class Lambda(Special):
         sys.stdout.write(")")
         
         sys.stdout.write("\n")
+
+        # The Return value returned by lambda is used by the print method in 
+        # the print method for the regular class to avoid printing a new line.
+        # This is done so that the output matches the reference implementation
+        return True

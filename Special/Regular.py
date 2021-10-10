@@ -19,6 +19,9 @@ class Regular(Special):
 
         if not p:
             sys.stdout.write("(")
+
+            # Increased indendation to match the output
+            # to the reference implementation
             car.print(-(abs(n) + 4), False)
 
             if not cdr.isNull():
@@ -36,6 +39,8 @@ class Regular(Special):
             if n >= 0:
                 sys.stdout.write("\n")
         else:
+
+            # Used by the print method for lambda class
             indent = car.print(-(abs(n)), False)
 
             if not cdr.isNull():
