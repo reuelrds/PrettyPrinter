@@ -149,7 +149,6 @@ class Parser:
             cdr = self.parseExp()
             token = self.scanner.getNextToken()
 
-            # TODO: Same as above for None token.
             if token is None:
                 return
 
@@ -157,7 +156,7 @@ class Parser:
                 return cdr
 
             else:
-                self.__error("Error in parsing token from the input")
+                self.__error(f"Expected a RPAREN after an expression following DOT. Got: {token}")
                 return
 
         else:

@@ -25,16 +25,8 @@ class Lambda(Special):
         if abs(n) + 4 > 0:
             sys.stdout.write("\n")
         body.print(n=(abs(n)+4), p=False)
-        # if abs(n) + 4 > 0:
-            # sys.stdout.write("\n")
         
         sys.stdout.write(" " * (abs(n)))
         sys.stdout.write(")")
         
-        # if abs(n) + 4 > 0:
         sys.stdout.write("\n")
-
-        c = 1
-
-        return True
-        # end_paren.print(n=(abs(n)+4), p=True)

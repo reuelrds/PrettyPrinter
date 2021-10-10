@@ -6,12 +6,11 @@ from Special import Special
 
 
 class Define(Special):
-    # TODO: Add fields and modify the constructor as needed.
+
     def __init__(self):
         pass
 
     def print(self, t, n, p):
-        # TODO: Implement this function.
 
         sys.stdout.write(' ' * n)
         sys.stdout.write("(define ")

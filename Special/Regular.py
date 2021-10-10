@@ -6,12 +6,11 @@ from Special import Special
 
 
 class Regular(Special):
-    # TODO: Add fields and modify the constructor as needed.
+
     def __init__(self):
         pass
 
     def print(self, t, n, p):
-        # TODO: Implement this function.
 
         car = t.getCar()
         cdr = t.getCdr()
@@ -25,8 +24,6 @@ class Regular(Special):
             if not cdr.isNull():
                 sys.stdout.write(" ")
 
-            # if n > 0:
-                # sys.stdout.write("\n")
             if cdr.isPair() or cdr.isNull():
                 cdr.print(-(abs(n)), True)
 
@@ -53,6 +50,3 @@ class Regular(Special):
                 sys.stdout.write(". ")
                 cdr.print(-(abs(n)), True)
                 sys.stdout.write(")")
-
-        # if n > 0:
-            # sys.stdout.write("\n")

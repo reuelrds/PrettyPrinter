@@ -6,7 +6,7 @@ from Special import Special
 
 
 class Let(Special):
-    # TODO: Add fields and modify the constructor as needed.
+
     def __init__(self):
         pass
 

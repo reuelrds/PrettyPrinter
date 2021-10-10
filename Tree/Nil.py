@@ -24,9 +24,6 @@ class Nil(Node):
 
         sys.stdout.write(' ' *( n - 4 ))
 
-        # if n > 0:
-            # sys.stdout.write("\n")
-
         if p:
             sys.stdout.write(")")
         else:
@@ -34,8 +31,6 @@ class Nil(Node):
 
         if n > 0:
             sys.stdout.write("\n")
-        # if n < 0:
-        #     sys.stdout.write(" ")
 
     def isNull(self):
         return True
