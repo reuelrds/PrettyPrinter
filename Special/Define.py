@@ -12,8 +12,6 @@ class Define(Special):
 
     def print(self, t, n, p):
         # TODO: Implement this function.
-        if n > 0:
-            sys.stdout.write("\n")
 
         sys.stdout.write(' ' * n)
         sys.stdout.write("(define ")
@@ -21,6 +19,8 @@ class Define(Special):
         if not t.getCdr().getCar().isPair():
             t.getCdr().print(n=-(abs(n)+4), p=True)
 
+            if n >= 0:
+                sys.stdout.write("\n")
         else:
 
             variable_name = t.getCdr().getCar()
@@ -28,5 +28,9 @@ class Define(Special):
             end_paren = t.getCdr().getCdr().getCdr()
 
             variable_name.print(n=-(abs(n) + 4), p=False)
+
+            if abs(n) + 4 > 0:
+                sys.stdout.write("\n")
+
             variable_value.print(n=(abs(n) + 4), p=False)
             end_paren.print(n=(abs(n)+4), p=True)

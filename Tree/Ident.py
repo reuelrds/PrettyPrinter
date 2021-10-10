@@ -13,27 +13,14 @@ class Ident(Node):
 
     def print(self, n, p=False):
 
-        if n > 0:
-            sys.stdout.write("\n")
-
         sys.stdout.write(' ' * n)
 
         sys.stdout.write(self.name)
 
-        # If the indentation value `n` is negative
-        # we print a single space after `#t` or `#f`.
-        #
-        # And if the indentation is positive, we do
-        # not print a space.
-        #
-        # TODO: Explain the following in a better way.
-        #       And maybe refactor it to a helper funtion.
 
-        # if n < 0:
-        # sys.stdout.write(" " * (-n//n))
-
-        # if n > 0:
-        # sys.stdout.write("\n")
+        if n > 0:
+            sys.stdout.write("\n")
+      
 
     def isSymbol(self):
         return True

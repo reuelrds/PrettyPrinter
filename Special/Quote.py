@@ -13,11 +13,11 @@ class Quote(Special):
     def print(self, t, n, p):
         # TODO: Implement this function.
 
-        if n > 0:
-            sys.stdout.write("\n")
 
         sys.stdout.write(' ' * n)
         sys.stdout.write("'")
 
         t.getCdr().getCar().print(n=-(abs(n)), p=False)
 
+        if n > 0:
+            sys.stdout.write("\n")

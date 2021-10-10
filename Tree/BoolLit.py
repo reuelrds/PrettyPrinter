@@ -34,8 +34,6 @@ class BoolLit(Node):
 
     def print(self, n, p=False):
 
-        if n > 0:
-            sys.stdout.write("\n")
 
         sys.stdout.write(' ' * n)
 
@@ -44,19 +42,9 @@ class BoolLit(Node):
         else:
             sys.stdout.write("#f")
 
-        # If the indentation value `n` is negative
-        # we print a single space after `#t` or `#f`.
-        #
-        # And if the indentation is positive, we do
-        # not print a space.
-        #
-        # TODO: Explain the following in a better way.
+        if n > 0:
+            sys.stdout.write("\n")
 
-        # if n < 0:
-            # sys.stdout.write(" " * (-n//n))
-
-        # if n > 0:
-            # sys.stdout.write("\n")
 
     def isBool(self):
         return True
